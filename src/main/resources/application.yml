@@ -9,16 +9,6 @@ security:
     name: root
     password: 123456
 
-# server:
-#   port: 8761
-# eureka:
-#   client:
-#     registerWithEureka: false
-#     fetchRegistry: false
-#     serviceUrl:
-#       defaultZone: http://127.0.0.1:8761/eureka/
-
-
 ---
 spring:
   profiles: 1
@@ -60,3 +50,17 @@ eureka:
     fetch-registry: true
     serviceUrl:
       defaultZone: http://root:123456@1.eureka.com:10001/eureka/,http://root:123456@2.eureka.com:10002/eureka/
+
+---
+spring:
+  profiles: dev
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
